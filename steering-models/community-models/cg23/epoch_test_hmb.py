@@ -8,8 +8,6 @@ Tests the model on the final test set
 Original By: dolaameng Revd: cgundling
 '''
 
-from __future__ import print_function
-
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
