@@ -7,8 +7,6 @@ Generates images/steerings for final testing
 Original By: dolaameng Revd By: cgundling
 '''
 
-from __future__ import print_function
-
 import numpy as np
 import pandas as pd
 import csv

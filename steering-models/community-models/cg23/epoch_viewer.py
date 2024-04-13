@@ -3,8 +3,6 @@ Results video generator Udacity Challenge 2
 Original By: Comma.ai Revd: Chris Gundling
 '''
 
-from __future__ import print_function
-
 import argparse
 import sys
 import numpy as np
