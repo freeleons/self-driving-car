@@ -15,7 +15,6 @@ from __future__ import print_function
 import numpy as np
 import pandas as pd
 import csv
-import random
 
 from collections import defaultdict
 from os import path
@@ -24,6 +23,7 @@ from scipy import ndimage
 from scipy import misc
 from keras import backend as K
 from keras.preprocessing.image import ImageDataGenerator
+import secrets
 
 '''
 Generator assumes the dataset folder has the following structure:
@@ -190,7 +190,7 @@ def read_images_augment(image_folder, camera, ids, image_size):
         img = imresize(crop_img, size=image_size)
 
         # Rotate randomly by small amount (not a viewpoint transform)
-        rotate = random.uniform(-1, 1)
+        rotate = secrets.SystemRandom().uniform(-1, 1)
         img = ndimage.rotate(img, rotate, reshape=False)
 
         imgs.append(img)
@@ -277,7 +277,7 @@ def data_generator(steering_log, image_log, image_folder, unique_list, gen_type=
         else:
             camera_select = camera
 
-        coin = random.randint(1, 2)
+        coin = secrets.SystemRandom().randint(1, 2)
         if steerings[i] and image_stamps[i]:
             if camera_select == 'right':
                 images = read_images(image_folder, camera_select, image_stamps_r[i], image_size)
@@ -322,9 +322,9 @@ def data_generator(steering_log, image_log, image_folder, unique_list, gen_type=
             camera_select = 'center' #random.choice(camera)
 
         if shuffle:
-            i = int(random.choice(unique_list))
+            i = int(secrets.choice(unique_list))
             while i > end:
-                i = int(random.choice(unique_list))
+                i = int(secrets.choice(unique_list))
         else:
             i += 1
             while i not in unique_list:
